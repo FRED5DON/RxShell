@@ -30,11 +30,13 @@ public class StreamReaderWorker implements StreamType, Runnable {
         if (is == null) return;
         BufferedReader br = null;
         InputStreamReader isr = null;
+        boolean isReadSth=false;
         try {
             isr = new InputStreamReader(is);
             br = new BufferedReader(isr);
             String line = null;
             while ((line = br.readLine()) != null) {
+                isReadSth=true;
                 if (out != null) {
                     if (this.type == NORMAL) {
                         out.normal(line);
@@ -46,6 +48,11 @@ public class StreamReaderWorker implements StreamType, Runnable {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
+            if (!isReadSth){
+                if (out != null) {
+                    out.error("");
+                }
+            }
             try {
                 if (br != null) br.close();
                 if (isr != null) isr.close();
