@@ -1,6 +1,6 @@
 package com.eslegod.android.rxshell;
 
-import io.reactivex.*;
+import io.reactivex.rxjava3.core.*;
 
 public class RxShell {
 

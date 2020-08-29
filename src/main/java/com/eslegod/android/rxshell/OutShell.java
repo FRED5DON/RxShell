@@ -1,6 +1,6 @@
 package com.eslegod.android.rxshell;
 
-import io.reactivex.Emitter;
+import io.reactivex.rxjava3.core.Emitter;
 
 public class OutShell<T extends Emitter<OutLine>> implements Out, StreamType {
 
